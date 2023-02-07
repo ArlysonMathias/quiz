@@ -121,9 +121,9 @@ const data = [
         answer: "Arquipo",
       },
       {
-        question: "Com qual instrução declaramos uma constante em JavaScript?",
-        options: ["const", "let", "var", "define"],
-        answer: "const",
+        question: "Que povo recebeu Paulo com grande interesse, e examinou as Escrituras, para ver se tudo era verdade?om qual instrução declaramos uma constante em JavaScript?",
+        options: ["Os tessalônios", "Os atenienses", "Os bereanos", "Os romanos"],
+        answer: "Os bereanos",
       },
       {
         question:
@@ -143,7 +143,7 @@ const data = [
         options: [
           "Toda em ouro.",
           "Ouro, prata, bronze, ferro e barro.",
-          "Ouro, prata, bronze, ferro e barro.",
+          "Ouro, prata, bronze, ferro e latão.",
           "Ouro, latão e ferro",
         ],
         answer: "Ouro, prata, bronze, ferro e barro.",
