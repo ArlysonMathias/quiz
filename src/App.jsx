@@ -4,19 +4,21 @@ import { useContext, useEffect } from "react";
 import Question from "./components/Question";
 import { QuizContext } from "./context/quiz";
 import GameOver from "./components/GameOver";
+import PickCategory from "./components/PickCategory";
 
 function App() {
   const [quizState, dispatch] = useContext(QuizContext);
 
   useEffect(() => {
     //embaralhar as questões
-    dispatch({type: "REORDER_QUESTIONS"})
-  },[])
+    dispatch({ type: "REORDER_QUESTIONS" });
+  }, []);
 
   return (
     <div className="App">
       <h1>Quiz Bíblico</h1>
       {quizState.gameStage === "START" && <Welcome />}
+      {quizState.gameStage === "CATEGORY" && <PickCategory />}
       {quizState.gameStage === "PLAYING" && <Question />}
       {quizState.gameStage === "END" && <GameOver />}
     </div>

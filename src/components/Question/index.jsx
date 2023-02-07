@@ -5,6 +5,9 @@ import "./style.css";
 
 const Question = () => {
   const [quizState, dispatch] = useContext(QuizContext);
+
+  // console.log(quizState.questions)
+  
   const currentQuestion = quizState.questions[quizState.currentQuestion];
 
   const onSelectOption = (option) => {
