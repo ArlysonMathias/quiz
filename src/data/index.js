@@ -121,7 +121,7 @@ const data = [
         answer: "Arquipo",
       },
       {
-        question: "Que povo recebeu Paulo com grande interesse, e examinou as Escrituras, para ver se tudo era verdade?om qual instrução declaramos uma constante em JavaScript?",
+        question: "Que povo recebeu Paulo com grande interesse, e examinou as Escrituras, para ver se tudo era verdade?",
         options: ["Os tessalônios", "Os atenienses", "Os bereanos", "Os romanos"],
         answer: "Os bereanos",
       },
