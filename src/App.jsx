@@ -5,6 +5,7 @@ import Question from "./components/Question";
 import { QuizContext } from "./context/quiz";
 import GameOver from "./components/GameOver";
 import PickCategory from "./components/PickCategory";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [quizState, dispatch] = useContext(QuizContext);
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <Toaster />
       <h1>Quiz Bíblico</h1>
       {quizState.gameStage === "START" && <Welcome />}
       {quizState.gameStage === "CATEGORY" && <PickCategory />}

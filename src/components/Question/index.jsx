@@ -5,10 +5,11 @@ import "./style.css";
 
 const Question = () => {
   const [quizState, dispatch] = useContext(QuizContext);
-  const[totalInSeconds, setTotalInSeconds] = useState(15)
+  const [totalInSeconds, setTotalInSeconds] = useState(15);
+  const [clicked, setClicked] = useState(false);
 
-  const seconds = totalInSeconds % 60
-  
+  const seconds = totalInSeconds % 60;
+
   const currentQuestion = quizState.questions[quizState.currentQuestion];
 
   const onSelectOption = (option) => {
@@ -22,21 +23,25 @@ const Question = () => {
   };
 
   useEffect(() => {
-    if(totalInSeconds === -1){
-      dispatch({ type: "CHANGE_QUESTION" })
-      setTotalInSeconds(15)
-    }else{
+    if (clicked) {
+      setTotalInSeconds(15);
+      setClicked(false)
+    } else if (totalInSeconds === -1) {
+      dispatch({ type: "CHANGE_QUESTION" });
+      setTotalInSeconds(15);
+    } else if (totalInSeconds != -1) {
       setTimeout(() => {
-        setTotalInSeconds( totalInSeconds - 1)
-      }, 1000)
+        setTotalInSeconds(totalInSeconds - 1);
+      }, 1000);
     }
-  },[totalInSeconds])
+  }, [totalInSeconds]);
 
   return (
     <div id="question">
       <div className="header-questions">
         <p>
-          Pergunta {quizState.currentQuestion + 1} de {quizState.questions.length}
+          Pergunta {quizState.currentQuestion + 1} de{" "}
+          {quizState.questions.length}
         </p>
         <span className="timer">{seconds}</span>
       </div>
@@ -52,7 +57,12 @@ const Question = () => {
         ))}
       </div>
       {quizState.answerSelected && (
-        <button onClick={() => dispatch({ type: "CHANGE_QUESTION" })}>
+        <button
+          onClick={() => {
+            setClicked(true)
+            dispatch({ type: "CHANGE_QUESTION" });
+          }}
+        >
           Continuar
         </button>
       )}
