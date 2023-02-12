@@ -8,6 +8,7 @@ const initialState = {
   questions,
   currentQuestion: 0,
   answerSelected: false,
+  title: "",
   score: 0,
 };
 
@@ -23,15 +24,18 @@ const quizReducer = (state, action) => {
 
     case "START_GAME":
       let quizQuestions = null;
+      let newTitle = "";
 
       state.questions.forEach((question) => {
         if (question.category === action.payload) {
           quizQuestions = question.questions;
+          newTitle = action.payload;
         }
       });
 
       return {
         ...state,
+        title: newTitle,
         questions: quizQuestions,
         gameStage: STAGES[2],
       };
@@ -84,7 +88,6 @@ const quizReducer = (state, action) => {
         answerSelected: option,
       };
     }
-
 
     default:
       return state;
