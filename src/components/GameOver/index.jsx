@@ -5,7 +5,6 @@ import Welldone from "../../img/welldone.svg";
 
 const GameOver = () => {
   const [quizState, dispatch] = useContext(QuizContext);
-  console.log(quizState.questions);
   return (
     <div id="game-over">
       <h2>Fim de jogo</h2>

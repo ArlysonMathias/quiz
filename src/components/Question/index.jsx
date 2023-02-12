@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { QuizContext } from "../../context/quiz";
 import Options from "../Options";
 import "./style.css";
 
 const Question = () => {
   const [quizState, dispatch] = useContext(QuizContext);
+  const[totalInSeconds, setTotalInSeconds] = useState(15)
 
-  // console.log(quizState.questions)
+  const seconds = totalInSeconds % 60
   
   const currentQuestion = quizState.questions[quizState.currentQuestion];
 
@@ -20,11 +21,25 @@ const Question = () => {
     });
   };
 
+  useEffect(() => {
+    if(totalInSeconds === -1){
+      dispatch({ type: "CHANGE_QUESTION" })
+      setTotalInSeconds(15)
+    }else{
+      setTimeout(() => {
+        setTotalInSeconds( totalInSeconds - 1)
+      }, 1000)
+    }
+  },[totalInSeconds])
+
   return (
     <div id="question">
-      <p>
-        Pergunta {quizState.currentQuestion + 1} de {quizState.questions.length}
-      </p>
+      <div className="header-questions">
+        <p>
+          Pergunta {quizState.currentQuestion + 1} de {quizState.questions.length}
+        </p>
+        <span className="timer">{seconds}</span>
+      </div>
       <h2>{currentQuestion.question}</h2>
       <div id="options-container">
         {currentQuestion.options.map((option) => (
